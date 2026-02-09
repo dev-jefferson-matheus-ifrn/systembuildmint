@@ -3,7 +3,7 @@
 echo "###########################"
 echo "MONTANDO O SISTEMA"
 echo "###########################"
-
+echo ""
 ROOT_PAHT="/home/$(whoami)"
 
 build_download_structure(){
@@ -21,7 +21,7 @@ build_download_structure(){
 build_download_structure
 
 echo "##########################"
-
+echo ""
 build_programing_folder_structure(){
     echo "Mudando para o diretorio Home"
     FOLDER_PROGRAMING_METERIALS="materias programacao"
@@ -40,10 +40,28 @@ build_programing_folder_structure(){
 
     cd $FOLDER_PROGRAMING_METERIALS
 
-    for directory in "$directory_folders_programing{[@]}"; do
+    for directory in "${directory_folders_programing[@]}"; do
         mkdir $directory
     done
     
     echo "Etapa de Criação do diretorio de materias concluida"
 }
 build_programing_folder_structure
+
+echo "##########################"
+echo ""
+build_pictures_folder_structure(){
+    echo "Mudando para o diretorio de Imagens"
+    cd $ROOT_PAHT/Pictures
+
+    directory_pictures=("screenshots" "wallpapers")
+
+    for directory in "${directory_pictures[@]}"; do
+        mkdir $directory
+    done
+
+
+    echo "Etapa de Criação da estrutura do diretorio de imagens concluida"
+}
+
+build_pictures_folder_structure
