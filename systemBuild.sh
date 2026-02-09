@@ -15,5 +15,35 @@ build_download_structure(){
     for directory in "${DOWNLOAD_FOLDERS_STRUCTURE[@]}"; do
         mkdir $directory
     done
+
+    echo "Fim da etapa de criação dos diretorios"
 }
 build_download_structure
+
+echo "##########################"
+
+build_programing_folder_structure(){
+    echo "Mudando para o diretorio Home"
+    FOLDER_PROGRAMING_METERIALS="materias programacao"
+    directory_folders_programing=("SOA" "BD")
+    cd $ROOT_PAHT
+
+    return_mkdir_command=$(mkdir $FOLDER_PROGRAMING_METERIALS 2>/dev/null)
+
+    if [ -z "$return_mkdir_command" ]; then
+        echo "Diretorio materias programacao já existente"
+        return 0
+    fi
+
+    
+    mkdir $FOLDER_PROGRAMING_METERIALS
+
+    cd $FOLDER_PROGRAMING_METERIALS
+
+    for directory in "$directory_folders_programing{[@]}"; do
+        mkdir $directory
+    done
+    
+    echo "Etapa de Criação do diretorio de materias concluida"
+}
+build_programing_folder_structure
